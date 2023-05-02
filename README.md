@@ -1,11 +1,14 @@
 # Reducing Telco Customer Churn Through Statistical Testing and Machine Learning Modeling Techniques
 
+**Official Project Report**  
+Link: https://docs.google.com/document/d/1ke1jW6u6KTLUWF2Tj97lp8qvR6g6VyeQjXJeEW2VTlI/edit?usp=sharing  
+
 This report provides an examination of the Telco Customer Churn dataset through both statistical testing and machine learning model techniques to better predict whether customers would churn or not and construct a solution to reduce churn.
 
-Yesenia Garcia: 
-Marisol Guel:
-Anoosha Valliani:
-Minji Kim:
+Yesenia Garcia  
+Marisol Guel  
+Anoosha Valliani  
+Minji Kim  
 
 **Introduction**  
 Background  

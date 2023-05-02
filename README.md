@@ -2,10 +2,10 @@
 
 This report provides an examination of the Telco Customer Churn dataset through both statistical testing and machine learning model techniques to better predict whether customers would churn or not and construct a solution to reduce churn.
 
-Yesenia Garcia  
-Marisol Guel  
-Anoosha Valliani  
-Minji Kim  
+Yesenia Garcia: 
+Marisol Guel:
+Anoosha Valliani:
+Minji Kim:
 
 **Introduction**  
 Background  
@@ -26,30 +26,30 @@ The Telco Customer Churn Dataset details information regarding “home phone and
 Feature Detailing
 
 Feature/Variable, DataType, Description
-> City, String, The city of the customer’s primary residence.
-> Gender, String, The customer’s gender: Male, Female
-> Senior Citizen, String, Indicates if the customer is 65 or older: Yes, No
-> Partner, String, Indicate if the customer has a partner: Yes, No
-> Dependents, String, Indicates if the customer lives with any dependents: Yes, No. Dependents could be children, parents, grandparents, etc.
-> Tenure Months, Int, Indicates the total amount of months that the customer has been with the company by the end of the quarter specified above.
-> Phone Service, String, Indicates if the customer subscribes to home phone service with the company: Yes, No
-> Multiple Lines, String, Indicates if the customer subscribes to multiple telephone lines with the company: Yes, No
-> Internet Service, String, Indicates if the customer subscribes to Internet service with the company: No, DSL, Fiber Optic, Cable.
-> Online Security, String, Indicates if the customer subscribes to an additional online security service provided by the company: Yes, No
-> Online Backup, String, Indicates if the customer subscribes to an additional online backup service provided by the company: Yes, No
-> Device Protection, String, Indicates if the customer subscribes to an additional device protection plan for their Internet equipment provided by the company: Yes, No
-> Tech Support, String, Indicates if the customer subscribes to an additional technical support plan from the company with reduced wait times: Yes, No
-> Streaming TV, String, Indicates if the customer uses their Internet service to stream television programing from a third party provider: Yes, No. The company does not charge an additional fee for this service.
-> Streaming Movies, String, Indicates if the customer uses their Internet service to stream movies from a third party provider: Yes, No. The company does not charge an additional fee for this service.
-> Contract, String, Indicates the customer’s current contract type: Month-to-Month, One Year, Two Year.
-> Paperless Billing, String, Indicates if the customer has chosen paperless billing: Yes, No
-> Payment Method, String, Indicates how the customer pays their bill: Bank Withdrawal, Credit Card, Mailed Check
-> Monthly Charges, Float, Indicates the customer’s current total monthly charge for all their services from the company.
-> Total Charges, Float, Indicates the customer’s total charges, calculated to the end of the quarter specified above.
-> Churn Label, String, Yes = the customer left the company this quarter. No = the customer remained with the company. Directly related to Churn Value.
-> Churn Score, Int, A value from 0-100 that is calculated using the predictive tool IBM SPSS Modeler. The model incorporates multiple factors known to cause churn. The higher the score, the more likely the customer will churn.
-> CLTV, Int, Customer Lifetime Value. A predicted CLTV is calculated using corporate formulas and existing data. The higher the value, the more valuable the customer. High value customers should be monitored for churn.
-> Churn Reason, String, A customer’s specific reason for leaving the company. Directly related to Churn Category.
+>- City, String, The city of the customer’s primary residence.
+>- Gender, String, The customer’s gender: Male, Female
+>- Senior Citizen, String, Indicates if the customer is 65 or older: Yes, No
+>- Partner, String, Indicate if the customer has a partner: Yes, No
+>- Dependents, String, Indicates if the customer lives with any dependents: Yes, No. Dependents could be children, parents, grandparents, etc.
+>- Tenure Months, Int, Indicates the total amount of months that the customer has been with the company by the end of the quarter specified above.
+>- Phone Service, String, Indicates if the customer subscribes to home phone service with the company: Yes, No
+>- Multiple Lines, String, Indicates if the customer subscribes to multiple telephone lines with the company: Yes, No
+>- Internet Service, String, Indicates if the customer subscribes to Internet service with the company: No, DSL, Fiber Optic, Cable.
+>- Online Security, String, Indicates if the customer subscribes to an additional online security service provided by the company: Yes, No
+>- Online Backup, String, Indicates if the customer subscribes to an additional online backup service provided by the company: Yes, No
+>- Device Protection, String, Indicates if the customer subscribes to an additional device protection plan for their Internet equipment provided by the company: Yes, No
+>- Tech Support, String, Indicates if the customer subscribes to an additional technical support plan from the company with reduced wait times: Yes, No
+>- Streaming TV, String, Indicates if the customer uses their Internet service to stream television programing from a third party provider: Yes, No. The company does not charge an additional fee for this service.
+>- Streaming Movies, String, Indicates if the customer uses their Internet service to stream movies from a third party provider: Yes, No. The company does not charge an additional fee for this service.
+>- Contract, String, Indicates the customer’s current contract type: Month-to-Month, One Year, Two Year.
+>- Paperless Billing, String, Indicates if the customer has chosen paperless billing: Yes, No
+>- Payment Method, String, Indicates how the customer pays their bill: Bank Withdrawal, Credit Card, Mailed Check
+>- Monthly Charges, Float, Indicates the customer’s current total monthly charge for all their services from the company.
+>- Total Charges, Float, Indicates the customer’s total charges, calculated to the end of the quarter specified above.
+>- Churn Label, String, Yes = the customer left the company this quarter. No = the customer remained with the company. Directly related to Churn Value.
+>- Churn Score, Int, A value from 0-100 that is calculated using the predictive tool IBM SPSS Modeler. The model incorporates multiple factors known to cause churn. The higher the score, the more likely the customer will churn.
+>- CLTV, Int, Customer Lifetime Value. A predicted CLTV is calculated using corporate formulas and existing data. The higher the value, the more valuable the customer. High value customers should be monitored for churn.
+>- Churn Reason, String, A customer’s specific reason for leaving the company. Directly related to Churn Category.
 
 **Methodology**  
 We decided our methodological approach into two categories in order to conclude a collective solution serving insights from both methods.
@@ -77,19 +77,19 @@ The third model took in only 5 columns which showed to have the highest impact s
 Our methods for creating the model are as follows: 
 
 Preprocessing 
-> Data Cleaning 
-> Feature Selection 
+>- Data Cleaning 
+>- Feature Selection 
 Feature Engineering
-> One hot encode categorical variables with multiple unique values
-> Label encode categorical variables with 2 unique values
-> Reduce the dimensionality of the data by reducing column number
+>- One hot encode categorical variables with multiple unique values
+>- Label encode categorical variables with 2 unique values
+>- Reduce the dimensionality of the data by reducing column number
 Split the data into training and testing sets 
-> Train the model on the testing set
-> Utilize a 70:30 ratio for testing and training
+>- Train the model on the testing set
+>- Utilize a 70:30 ratio for testing and training
  Define and test the model
-> Utilize (n_estimators = 100, random_state=42) parameters
+>- Utilize (n_estimators = 100, random_state=42) parameters
 Evaluate the model 	
-> Use confusion_matrix, classification_report, accuracy_score
+>- Use confusion_matrix, classification_report, accuracy_score
 
 
 
@@ -110,7 +110,7 @@ Precision - measures the ratio of true positives for a class over the total numb
 Recall - measures the ratio of true positives for a class to the total number of instances that belong to that class
 F1 - measures a model’s accuracy by combining the precision and recall scores.
 
-Feature Importances is an attribute available for Random Forest models, and it computes the relative importance of feature inputs in determining the final prediction of a label. It completes this by calculating the gini importance, or the mean decrease in impurity. This measures how effective a feature is at reducing uncertainty or variance when creating decision trees. This score is then averaged among all decision trees to return a final ‘feature importance’ score for that feature. We can use the results of the feature importance to decide which features to drop to simplify our model and increase interpretability.
+Feature Importances is an attribute available for Random Forest models, and it computes the relative importance of feature inputs in determining the final prediction of a label. It completes this by calculating the gini importance, or the mean decrease in impurity. This measures how effective a feature is at reducing uncertainty or variance when creating decision trees. This score is then averaged among all decision trees to return a final ‘feature importance’ score for that feature. We can use the results of the feature importance to decide which features to drop to simplify our model and increase interpretability.  
 **Results**  
 Before conducting our analysis, we expected customers that did churn to perhaps have the basic factors that usually make customers disconnect from the service, including higher monthly or total charges, better offers from leading companies, or basic dissatisfaction with the service itself. Therefore, we expected most, if not all, variables or features that fell under demographics, population, services, and status to be of significant importance or influence, specifically highlighting “Churn Reason.” Although we did not have a fully developed hypothesis, this lead us to believe that the customers who did churn would all fall in a single group of similar variables that correlate with each other and provide a reasonable conclusion for the causation to churn, specifically at Telco to then attend to that group every time churn arose even if this method wouldn’t be applicable to all companies. On the other hand, we expected for factors regarding “Customer ID,” “Count,” “Country,” “State,” “Zip Code,” “Lat Long,” “Latitude,” and “Longitude” to be present but of little importance considering they either already state given information that applies to all data points (this being all location variables except “City” considering that the entire dataset is known to be regarding customers in California without having to analyze each data point) or have irrelevant labeling that doesn’t serve a purpose in testing (“Customer ID” and “Count”). We chose our methodology as our analysis tool because, first, we wanted to see what we could do with our data after viewing the results of statistical testing. Then if there were more diverse groupings than expected, that’s where machine learning would better contribute to a more well-rounded solution to reduce churn for the expected customer base.
 Statistical Testing Findings  
@@ -327,13 +327,13 @@ Internet Service _Fiber optic
 
 
 
-After evaluating the feature importances for our second model, we confirmed that demographic features such as ‘Dependents’,  ‘Gender’, and ‘Partner’ did not seem to be as important to predicting whether churn would occur or not. However, as seen by our third model, which contained only the 5 most important features, the performance did not improve. This suggests that further exploration and experimentation with different sets of features, parameters, and models may be necessary to improve the predictive performance. 
-**Conclusion**
+After evaluating the feature importances for our second model, we confirmed that demographic features such as ‘Dependents’,  ‘Gender’, and ‘Partner’ did not seem to be as important to predicting whether churn would occur or not. However, as seen by our third model, which contained only the 5 most important features, the performance did not improve. This suggests that further exploration and experimentation with different sets of features, parameters, and models may be necessary to improve the predictive performance.  
+**Conclusion**  
 Solution and Implications
 In conclusion, we were able to collectively identify potential causes of churn through statistical testing, predict which customers will churn or not through a machine learning model, and discover that time and customer’s service charges contribute the most to their decision to churn while demographic data plays a minimal role in that decision. In regards to if our findings are generalizable to other, similar contexts,  we believe that they can be to a certain extent. Two of our models were built using only a very small portion of the original dataset which might not be representative of the telecommunications industry and customer base. This suggests that there should be a level of caution when using it in other contexts. We believe that further research, data gathering on customer service details and of customers in different locations would be necessary to strengthen the confidence in our findings. However, certain time-related factors such as tenure months and financial considerations like total and monthly charges can be applied more broadly to other telecommunications businesses looking to retain customers. This is because they are primary factors customers use when deciding whether to switch to a different provider or remain loyal as well as if a service is the most financially advantageous choice for them. 
 
-As a result of overall testing and findings, we concluded that our proposed solution for Telco would be to preemptively target users predicted to churn since our model will only give us a label of whether they will churn or not and not a specific churn score. Additionally, we would utilize customer or user surveys to determine if and why they are dissatisfied with their service to then address those concerns in a timely manner to prevent churn before it occurs. This solution could also include reducing costs for customers and offering discounts or other incentives to stay with Telco, if a customer is labeled as likely to churn. Considering that we discovered the main reasons for churn through our statistical analysis, the solution would also include providing better training for customer support personnel to handle customer concerns. We choose this solution because instead of giving the company a score, like that of what IBM had already implemented, they are given a simpler answer that uses only the most important features to give an accurate score. This can free up resources that the company has to target those customers. Additionally, the interpretation of the score is not as clear and thus less actionable. The churn label allows for immediate action to try to retain the customers through discounts and offers, etc. Overall, the churn score is less understandable especially without information on what threshold is being set and what factors it takes into account. However, we believe that this solution maybe be both fair and unfair based on different aspects because while prioritizing attending to customers who are more likely to churn and therefore may be more unhappy with their services at the company may be fair in comparison to those who may be doing fine or are happy with their services, it can also be unfair to be offering better customer attention to those who are more likely to churn rather than all customers in general. We can tell this because it should be a company's priority to address their entire customer at the best service possible. However, this may be unrealistic depending on the company's size since this takes a lot of resources and therefore our solution is a more realistic approach even if it is not ideal. Additionally, there may be limitations considering altering our solution to external companies outside of Telco considering factors like locations outside of California. Therefore, our next steps would involve the retraining of the models with most important features, implementing different locations, and gathering more service details and financial changes.
-**References**
-TANKY. (2020, December 7). Telco customer churn: IBM dataset. Kaggle. Retrieved April 24, 2023, from https://www.kaggle.com/datasets/yeanzc/telco-customer-churn-ibm-dataset
-**Code**
+As a result of overall testing and findings, we concluded that our proposed solution for Telco would be to preemptively target users predicted to churn since our model will only give us a label of whether they will churn or not and not a specific churn score. Additionally, we would utilize customer or user surveys to determine if and why they are dissatisfied with their service to then address those concerns in a timely manner to prevent churn before it occurs. This solution could also include reducing costs for customers and offering discounts or other incentives to stay with Telco, if a customer is labeled as likely to churn. Considering that we discovered the main reasons for churn through our statistical analysis, the solution would also include providing better training for customer support personnel to handle customer concerns. We choose this solution because instead of giving the company a score, like that of what IBM had already implemented, they are given a simpler answer that uses only the most important features to give an accurate score. This can free up resources that the company has to target those customers. Additionally, the interpretation of the score is not as clear and thus less actionable. The churn label allows for immediate action to try to retain the customers through discounts and offers, etc. Overall, the churn score is less understandable especially without information on what threshold is being set and what factors it takes into account. However, we believe that this solution maybe be both fair and unfair based on different aspects because while prioritizing attending to customers who are more likely to churn and therefore may be more unhappy with their services at the company may be fair in comparison to those who may be doing fine or are happy with their services, it can also be unfair to be offering better customer attention to those who are more likely to churn rather than all customers in general. We can tell this because it should be a company's priority to address their entire customer at the best service possible. However, this may be unrealistic depending on the company's size since this takes a lot of resources and therefore our solution is a more realistic approach even if it is not ideal. Additionally, there may be limitations considering altering our solution to external companies outside of Telco considering factors like locations outside of California. Therefore, our next steps would involve the retraining of the models with most important features, implementing different locations, and gathering more service details and financial changes.  
+**References**  
+TANKY. (2020, December 7). Telco customer churn: IBM dataset. Kaggle. Retrieved April 24, 2023, from https://www.kaggle.com/datasets/yeanzc/telco-customer-churn-ibm-dataset  
+**Code**  
 GitHub: https://github.com/yesgar/Reducing-Telco-Customer-Churn-Through-Statistical-Testing-and-Machine-Learning-Model-Techniques

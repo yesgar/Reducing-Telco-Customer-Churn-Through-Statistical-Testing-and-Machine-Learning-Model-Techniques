@@ -50,29 +50,41 @@ Feature/Variable, DataType, Description
 
 **Methodology**  
 We decided our methodological approach into two categories in order to conclude a collective solution serving insights from both methods.  
+
 Statistical Testing Method  
 Our first methodological approach consisted of primarily identifying the customers at risk of churn and seeing if they followed similar patterns. From this, we expected to find a specific group of customers that would most likely contribute to churn. To begin with statistical testing for bivariate analysis, we first started by separating our data set into customers who did leave the services at Telco & those who didn’t. As you can see in our code, we did this by taking the churn label columns that equaled yes and no and putting them in their own CSV.  
+
 Next, we searched for similarities or patterns in other feature columns through numerical and categorical data analysis. As you can see in our code, we did this by .unique to first view all the reasons a customer could have potentially churned and then using .value_counts() and .nlargest() we were able to discover what were the top 3 leading reasons being the attitude of the support person, the competitor offering higher download speeds, and the competitor offering more data.  
+
 And throughout other columns, we did similar tests like these but we decided to tie them into our third phase of our statistical testing, which was to visualize the results as shown below to get a better inside look on what can be addressed in our final solution.  
+
 Machine Learning Model Method  
 Random Forest Classification:  
 We created a supervised machine learning model through Random Forests Classification from Scikit Learn because our goal was to classify the likelihood of customers to churn based on the demographic and service details we selected. We believed this model would allow us to better work with the categorical data that we encoded and would allow us to evaluate the importance of the features to inform our feature selection for future model iterations.  
+
 Random Forest is a classification model that utilizes decision trees of n_estimators that select random groupings of data from the training dataset. The decision trees consider random subsets of features when parsing through the subset of data which ensures that correlation among the decision trees is reduced. Once each decision tree has made a label prediction, the model combines all the predictions through majority voting and returns the most frequent label as the final output.  
+
 We created 3 machine learning models to predict customer churn. The first was a base model that took in all 27 feature columns and the original dataset of 7043 data points. The second model was trained in response to the low precision and recall scores of the initial model. To improve these scores, we used a resampling technique known as ‘undersampling’ in order to randomly remove instances from the majority class (customers who did not churn) in order to match the number of instances for the minority class (customers who did churn).  
+
 The third model took in only 5 columns which showed to have the highest impact scores from our previous model. These 5 columns were 'Total Charges', 'Monthly Charges', 'Tenure Months', 'Contract', 'Internet Service', and 'Churn Label'. Similar to the previous model, our third model employs undersampling to balance the dataset's class distribution. To match the size of the minority class (customers who did churn), it chose a portion of the majority class (customers who did not churn). We added the third model in a different ipynb file because the code was self-contained and might not run with the second model, so we split it for better differentiation and code structure to ensure everything worked well.  
 Our methods for creating the model are as follows:  
+
 Preprocessing 
 - Data Cleaning 
 - Feature Selection 
+
 Feature Engineering
 - One hot encode categorical variables with multiple unique values
 - Label encode categorical variables with 2 unique values
 - Reduce the dimensionality of the data by reducing column number
+
 Split the data into training and testing sets 
 - Train the model on the testing set
 - Utilize a 70:30 ratio for testing and training
- Define and test the model
+
+Define and test the model
 - Utilize (n_estimators = 100, random_state=42) parameters
+
 Evaluate the model 	
 - Use confusion_matrix, classification_report, accuracy_score
 
@@ -94,8 +106,10 @@ Feature Importances is an attribute available for Random Forest models, and it c
 
 **Results**  
 Before conducting our analysis, we expected customers that did churn to perhaps have the basic factors that usually make customers disconnect from the service, including higher monthly or total charges, better offers from leading companies, or basic dissatisfaction with the service itself. Therefore, we expected most, if not all, variables or features that fell under demographics, population, services, and status to be of significant importance or influence, specifically highlighting “Churn Reason.” Although we did not have a fully developed hypothesis, this lead us to believe that the customers who did churn would all fall in a single group of similar variables that correlate with each other and provide a reasonable conclusion for the causation to churn, specifically at Telco to then attend to that group every time churn arose even if this method wouldn’t be applicable to all companies. On the other hand, we expected for factors regarding “Customer ID,” “Count,” “Country,” “State,” “Zip Code,” “Lat Long,” “Latitude,” and “Longitude” to be present but of little importance considering they either already state given information that applies to all data points (this being all location variables except “City” considering that the entire dataset is known to be regarding customers in California without having to analyze each data point) or have irrelevant labeling that doesn’t serve a purpose in testing (“Customer ID” and “Count”). We chose our methodology as our analysis tool because, first, we wanted to see what we could do with our data after viewing the results of statistical testing. Then if there were more diverse groupings than expected, that’s where machine learning would better contribute to a more well-rounded solution to reduce churn for the expected customer base.  
+
 Statistical Testing Findings  
 From our first methodological approach, the “Statistical Testing” section, we derived a range of insights regarding the customers who did churn compared to those who didn’t. However, the most significant finding regarded the top 3 reasons customers churned at Telco being the attitude of customer support at 192 data points, the competing company offered higher download speeds at 189 data points, and then the competing company offered more data at 162 data points. This gives us an idea of what we should address head on before looking into similar column elements each row contains for churned customers. In this case prioritizing addressing reasons "Attitude of support person" and "Competitor offered higher download speeds" considering that they are very close alongside each other unlike the third runner up which has about a 27 point difference. Alongside this, we noticed that many customers who didn’t churn still occasionally had churn scores of high 70s and therefore we calculated the average churn score to see if there was any significance. As a result, we discovered that customers who did churn had an average churn score of 50.1, whereas those who did had a churn score of 82.5. Based on the average churn scores alongside whether a customer actually churned or not, we can predict that customers who didn't churn but have churn scores of high 70s and low 80s (and of course above) are most likely at risk of churning and therefore gives us a better idea of who to focus on regarding addressing the needs of customers who churned as well as those who are most likely to churn later on. However, this arose the question of “What values were weighed for the customers who didn’t churn for them to be set with a churn score near the average of those who did churn?” Based on this question we decided to test other averages such as customer charges where we found the total average charge for customers who churned was around $1532.80 whereas monthly charges were at $74.40. Although informational, these statistics didn’t provide significant insight and we concluded we could reconvene this question in part of our second methodological approach in evaluating a machine learning model. Alongside the top reasons customers churned, we also noticed a wide pool of customers who churned resided in similar demographics. Due to this, we discovered the top 2 cities that recurred the most within customers who churned were in the lower SE area of California, highlighting Los Angeles at 90 data points and San Diego and 50 data points. Based on these similarities, we decided to look at what other columns had similar or the same values for every customer who churned. As a result of this, we discovered that churn was more likely to occur with customers without a partner and customers without dependents. However, one thing that we did note from these insights was that correlation does not equal causation. Although we could find groupings based on similar/same variables within customers who churned data, there wasn’t a single table (Demographics, Location, Population, Services, and Status) that the groupings all fell in. For example, just because most customers who churned didn’t have a partner and paid by electronic check doesn’t mean that this is what caused them to, or the cause for, churn. Therefore, running this data through a machine learning model would better help us better confirm a customer grouping based on all 5 folds of the data. In conclusion, our first out of two-part methodological approach served as a strong foundational basis to steer our second approach giving us a more clear direction to understand what would best contribute to the most effective solution to reduce churn not only at Telco, but at a range of companies where applicable.  
+
 Machine Learning Model Findings  
 For our second methodological approach, being the “Machine Learning Model” section, we found the accuracy, recall, precision, F1 scores for all models and the feature importances scores for our model made on balanced data. 
 
@@ -132,7 +146,7 @@ category, precision, recall, f1-score, support
 - Weighted avg, 0.72, 0.72, 0.72, 1122
 
 Confusion Matrix:  
-(view official report for better demonstration)
+(view official report for better demonstration)  
 Model 1:  
 Predicted 0
 Predicted 1
@@ -143,8 +157,6 @@ Actual 1
 281
 307
 
-
-
 Model 2:  
 Predicted 0
 Predicted 1
@@ -154,8 +166,6 @@ Actual 0
 Actual 1
 139
 422
-
-
 
 Model 3:  
 Predicted 0
